@@ -1,7 +1,60 @@
 .set LOCALID_STEVEN, 1
 
 GraniteCave_StevensRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCave_EventScript_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, GraniteCave_EventScript_OnResume
 	.byte 0
+
+GraniteCave_EventScript_OnTransition::
+	call_if_set FLAG_CAUGHT_MEWTWO, GraniteCave_EventScript_HideMewtwo
+	call_if_unset FLAG_ACTIVATE_ORDER_66, GraniteCave_EventScript_HideMewtwo
+	call_if_unset FLAG_CAUGHT_MEWTWO, GraniteCave_EventScript_TryShowMewtwo
+	end
+
+GraniteCave_EventScript_HideMewtwo::
+	setflag FLAG_HIDE_MEWTWO
+	end
+
+GraniteCave_EventScript_TryShowMewtwo::
+	goto_if_set FLAG_DEFEATED_MEWTWO, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_MEWTWO
+	return
+
+GraniteCave_EventScript_OnResume::
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Legend_EventScript_TryRemoveObject
+	end
+
+GraniteCave_EventScript_Mewtwo::
+	lock
+	playmoncry SPECIES_MEWTWO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, 2
+	seteventmon SPECIES_MEWTWO, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, GraniteCave_EventScript_DefeatedMewtwo
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, GraniteCave_EventScript_RanMewtwo
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, GraniteCave_EventScript_RanMewtwo
+	setflag FLAG_CAUGHT_MEWTWO
+	release
+	end
+
+GraniteCave_EventScript_DefeatedMewtwo::
+	setflag FLAG_DEFEATED_MEWTWO
+	setflag FLAG_HIDE_MEWTWO
+	setvar VAR_0x8004, SPECIES_MEWTWO
+	goto Common_EventScript_LegendaryDisappeared
+	end
+
+GraniteCave_EventScript_RanMewtwo::
+	setflag FLAG_HIDE_MEWTWO
+	setvar VAR_0x8004, SPECIES_MEWTWO
+	goto Common_EventScript_LegendaryDisappeared
+	end
 
 GraniteCave_StevensRoom_EventScript_Steven::
 	lock

@@ -194,6 +194,10 @@ Route120_EventScript_ItemNugget::
 	finditem ITEM_NUGGET
 	end
 
+Route120_EventScript_ItemMetalCoat::
+	finditem ITEM_METAL_COAT
+	end
+
 Route120_EventScript_ItemFullHeal::
 	finditem ITEM_FULL_HEAL
 	end
@@ -370,6 +374,10 @@ JaggedPass_EventScript_ItemBurnHeal::
 	finditem ITEM_BURN_HEAL
 	end
 
+JaggedPass_EventScript_ItemKingsRock::
+	finditem ITEM_KINGS_ROCK
+	end
+
 FieryPath_EventScript_ItemFireStone::
 	finditem ITEM_FIRE_STONE
 	end
@@ -414,6 +422,10 @@ NewMauville_Inside_EventScript_ItemFullHeal::
 	finditem ITEM_FULL_HEAL
 	end
 
+NewMauville_Inside_EventScript_ItemMetalCoat::
+	finditem ITEM_METAL_COAT
+	end
+
 NewMauville_Inside_EventScript_ItemParalyzeHeal::
 	finditem ITEM_PARALYZE_HEAL
 	end
@@ -428,6 +440,10 @@ AbandonedShip_Rooms_B1F_EventScript_ItemEscapeRope::
 
 AbandonedShip_Rooms2_B1F_EventScript_ItemDiveBall::
 	finditem ITEM_DIVE_BALL
+	end
+
+AbandonedShip_Rooms2_B1F_EventScript_ItemDragonScale::
+	finditem ITEM_DRAGON_SCALE
 	end
 
 AbandonedShip_Room_B1F_EventScript_ItemTM13::
@@ -490,6 +506,10 @@ MtPyre_3F_EventScript_ItemSuperRepel::
 	finditem ITEM_SUPER_REPEL
 	end
 
+MtPyre_3F_EventScript_ItemKingsRock::
+	finditem ITEM_KINGS_ROCK
+	end
+
 MtPyre_4F_EventScript_ItemSeaIncense::
 	finditem ITEM_SEA_INCENSE
 	end
@@ -524,6 +544,10 @@ AquaHideout_B1F_EventScript_ItemMaxElixir::
 
 AquaHideout_B2F_EventScript_ItemNestBall::
 	finditem ITEM_NEST_BALL
+	end
+
+AquaHideout_B2F_EventScript_ItemUpgrade::
+	finditem ITEM_UP_GRADE
 	end
 
 AquaHideout_B2F_EventScript_ItemMasterBall::

@@ -46,6 +46,8 @@
 #include "union_room.h"
 #include "constants/rgb.h"
 
+extern u8 DebugMenu_Main[];
+
 // Menu actions
 enum
 {
@@ -55,6 +57,7 @@ enum
     MENU_ACTION_POKENAV,
     MENU_ACTION_PLAYER,
     MENU_ACTION_SAVE,
+	MENU_ACTION_DEBUG,
     MENU_ACTION_OPTION,
     MENU_ACTION_EXIT,
     MENU_ACTION_RETIRE_SAFARI,
@@ -97,6 +100,7 @@ static bool8 StartMenuPokeNavCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
+static bool8 StartMenuDebugCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
@@ -162,6 +166,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuPlayer, {.u8_void = StartMenuPlayerNameCallback}},
     {gText_MenuSave, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuOption, {.u8_void = StartMenuOptionCallback}},
+	{gText_MenuDebug, {.u8_void = StartMenuDebugCallback}},
     {gText_MenuExit, {.u8_void = StartMenuExitCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback}},
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
@@ -307,6 +312,11 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
+	
+	if (FlagGet(FLAG_SYS_DEBUG) == TRUE)
+	{
+		AddStartMenuAction(MENU_ACTION_DEBUG);
+	}
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
@@ -591,6 +601,7 @@ static bool8 HandleStartMenuInput(void)
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
+			&& gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
             && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
@@ -716,6 +727,15 @@ static bool8 StartMenuOptionCallback(void)
     }
 
     return FALSE;
+}
+
+static bool8 StartMenuDebugCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+	ScriptContext2_Enable();
+    ScriptContext1_SetupScript(DebugMenu_Main);
+    return TRUE;
 }
 
 static bool8 StartMenuExitCallback(void)

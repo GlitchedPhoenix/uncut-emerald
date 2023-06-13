@@ -12,10 +12,61 @@ MtChimney_MapScripts::
 
 MtChimney_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
+	call_if_unset FLAG_ACTIVATE_ORDER_66, MtChimney_EventScript_HideMoltres
+	call_if_set FLAG_CAUGHT_MOLTRES, MtChimney_EventScript_HideMoltres
+	call_if_unset FLAG_CAUGHT_MOLTRES, MtChimney_EventScript_TryShowMoltres
+	end
+
+MtChimney_EventScript_TryShowMoltres::
+	goto_if_set FLAG_DEFEATED_MOLTRES, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_MOLTRES
+	return
+
+MtChimney_EventScript_HideMoltres::
+	setflag FLAG_HIDE_MOLTRES
 	end
 
 MtChimney_OnResume:
 	setstepcallback STEP_CB_ASH
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Legend_EventScript_TryRemoveObject
+	end
+
+Legend_EventScript_TryRemoveObject::
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+MtChimney_EventScript_Moltres::
+	lock
+	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, 31
+	seteventmon SPECIES_MOLTRES, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtChimney_EventScript_DefeatedMoltres
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtChimney_EventScript_RanMoltres
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MtChimney_EventScript_RanMoltres
+	setflag FLAG_CAUGHT_MOLTRES
+	release
+	end
+
+MtChimney_EventScript_DefeatedMoltres::
+	setflag FLAG_DEFEATED_MOLTRES
+	setflag FLAG_HIDE_MOLTRES
+	setvar VAR_0x8004, SPECIES_MOLTRES
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+MtChimney_EventScript_RanMoltres::
+	setflag FLAG_HIDE_MOLTRES
+	setvar VAR_0x8004, SPECIES_MOLTRES
+	goto Common_EventScript_LegendaryFlewAway
 	end
 
 MtChimney_EventScript_Archie::

@@ -21,6 +21,15 @@ extern const u8 gText_FromSpace[];
 
 extern const u8 gText_Lv50[];
 extern const u8 gText_OpenLevel[];
+extern const u8 gText_MenuDebug[];
+
+extern const u8 gText_Debug_HMKit[];
+extern const u8 gText_Debug_Warp[];
+extern const u8 gText_Debug_Repel[];
+
+extern const u8 gText_DWarp_Littleroot[];
+extern const u8 gText_DWarp_NavelRock[];
+extern const u8 gText_DWarp_OneIsland[];
 
 extern const u8 gText_Mom[];
 extern const u8 gText_Dad[];
@@ -100,6 +109,23 @@ extern const u8 Roulette_Text_NotEnoughCoins[];
 extern const u8 gText_Slots[];
 extern const u8 gText_Roulette[];
 extern const u8 gText_Jackpot[];
+extern const u8 gText_Entry1[];
+extern const u8 gText_Entry2[];
+extern const u8 gText_Entry3[];
+extern const u8 gText_Entry4[];
+extern const u8 gText_Entry5[];
+extern const u8 gText_FuckingWhy[];
+
+extern const u8 gText_WhatsPassword[];
+extern const u8 gText_WhatsTime[];
+extern const u8 gText_WildRose[];
+extern const u8 gText_NoQuestion[];
+
+extern const u8 gText_MachinePassword[];
+extern const u8 gText_PleaseEnterThePassword[];
+extern const u8 gText_ToAccessTheTerminal[];
+extern const u8 gText_ThePassword[];
+extern const u8 gText_IsThisCorrect[];
 
 extern const u8 gText_YouDontHaveThreeCoins[];
 extern const u8 gText_QuitTheGame[];
@@ -216,6 +242,157 @@ extern const u8 gMenuText_Confirm[];
 extern const u8 gMenuText_Show[];
 extern const u8 gMenuText_Give2[];
 
+extern const u8 gText_Starter_Classic1[];
+extern const u8 gText_Starter_Classic2[];
+extern const u8 gText_Starter_Normal[];
+extern const u8 gText_Starter_Fire[];
+extern const u8 gText_Starter_Water[];
+extern const u8 gText_Starter_Grass[];
+extern const u8 gText_Starter_Electric[];
+extern const u8 gText_Starter_Ice[];
+extern const u8 gText_Starter_Rock[];
+extern const u8 gText_Starter_Ground[];
+extern const u8 gText_Starter_Poison[];
+extern const u8 gText_Starter_Flying[];
+extern const u8 gText_Starter_Fighting[];
+extern const u8 gText_Starter_Psychic[];
+extern const u8 gText_Starter_Ghost[];
+extern const u8 gText_Starter_Dark[];
+extern const u8 gText_Starter_Dragon[];
+extern const u8 gText_Starter_Bug[];
+extern const u8 gText_Starter_Steel[];
+extern const u8 gText_Starter_Pain[];
+extern const u8 gText_NextPage[];
+extern const u8 gText_Back[];
+extern const u8 gText_Why[];
+
+extern const u8 gText_Starter_Bulbasaur[];
+extern const u8 gText_Starter_Charmander[];
+extern const u8 gText_Starter_Squirtle[];
+extern const u8 gText_Starter_Chikorita[];
+extern const u8 gText_Starter_Cyndaquil[];
+extern const u8 gText_Starter_Totodile[];
+extern const u8 gText_Starter_Treecko[];
+extern const u8 gText_Starter_Torchic[];
+extern const u8 gText_Starter_Mudkip[];
+extern const u8 gText_Starter_Pikachu[];
+extern const u8 gText_Starter_Eevee[];
+
+extern const u8 gText_Starter_Rattata[];
+extern const u8 gText_Starter_Sentret[];
+extern const u8 gText_Starter_Togepi[];
+extern const u8 gText_Starter_Whismur[];
+extern const u8 gText_Starter_Zigzagoon[];
+extern const u8 gText_Starter_Skitty[];
+
+extern const u8 gText_Starter_Vulpix[];
+extern const u8 gText_Starter_Growlithe[];
+extern const u8 gText_Starter_Ponyta[];
+extern const u8 gText_Starter_Slugma[];
+extern const u8 gText_Starter_Numel[];
+extern const u8 gText_Starter_Houndour[];
+
+extern const u8 gText_Starter_Poliwag[];
+extern const u8 gText_Starter_Slowpoke[];
+extern const u8 gText_Starter_Psyduck[];
+extern const u8 gText_Starter_Shellder[];
+extern const u8 gText_Starter_Marill[];
+extern const u8 gText_Starter_Clamperl[];
+
+extern const u8 gText_Starter_Oddish[];
+extern const u8 gText_Starter_Bellsprout[];
+extern const u8 gText_Starter_Exeggcute[];
+extern const u8 gText_Starter_Hoppip[];
+extern const u8 gText_Starter_Cacnea[];
+extern const u8 gText_Starter_Shroomish[];
+
+extern const u8 gText_Starter_Voltorb[];
+extern const u8 gText_Starter_Elekid[];
+extern const u8 gText_Starter_Mareep[];
+extern const u8 gText_Starter_Electrike[];
+extern const u8 gText_Starter_Magnemite[];
+extern const u8 gText_Starter_Chinchou[];
+
+extern const u8 gText_Starter_Seel[];
+extern const u8 gText_Starter_Spheal[];
+extern const u8 gText_Starter_Lapras[];
+extern const u8 gText_Starter_Snorunt[];
+extern const u8 gText_Starter_Swinub[];
+extern const u8 gText_Starter_Delibird[];
+
+extern const u8 gText_Starter_Geodude[];
+extern const u8 gText_Starter_Anorith[];
+extern const u8 gText_Starter_Lileep[];
+extern const u8 gText_Starter_Omanyte[];
+extern const u8 gText_Starter_Kabuto[];
+extern const u8 gText_Starter_Larvitar[];
+
+extern const u8 gText_Starter_Onix[];
+extern const u8 gText_Starter_Sandshrew[];
+extern const u8 gText_Starter_Rhyhorn[];
+extern const u8 gText_Starter_Cubone[];
+extern const u8 gText_Starter_Phanpy[];
+extern const u8 gText_Starter_Trapinch[];
+
+extern const u8 gText_Starter_NidoranM[];
+extern const u8 gText_Starter_NidoranF[];
+extern const u8 gText_Starter_Ekans[];
+extern const u8 gText_Starter_Gulpin[];
+extern const u8 gText_Starter_Zubat[];
+extern const u8 gText_Starter_Seviper[];
+
+extern const u8 gText_Starter_Pidgey[];
+extern const u8 gText_Starter_Spearow[];
+extern const u8 gText_Starter_Tailow[];
+extern const u8 gText_Starter_Hoothoot[];
+extern const u8 gText_Starter_Doduo[];
+extern const u8 gText_Starter_Swablu[];
+
+extern const u8 gText_Starter_Caterpie[];
+extern const u8 gText_Starter_Weedle[];
+extern const u8 gText_Starter_Ledyba[];
+extern const u8 gText_Starter_Spinarak[];
+extern const u8 gText_Starter_Scyther[];
+extern const u8 gText_Starter_Nincada[];
+
+extern const u8 gText_Starter_Skarmory[];
+extern const u8 gText_Starter_Mawile[];
+extern const u8 gText_Starter_Aron[];
+extern const u8 gText_Starter_Beldum[];
+
+extern const u8 gText_Starter_Machop[];
+extern const u8 gText_Starter_Tyrogue[];
+extern const u8 gText_Starter_Meditite[];
+extern const u8 gText_Starter_Mankey[];
+extern const u8 gText_Starter_Makuhita[];
+extern const u8 gText_Starter_Heracross[];
+
+extern const u8 gText_Starter_Abra[];
+extern const u8 gText_Starter_Drowzee[];
+extern const u8 gText_Starter_Spoink[];
+extern const u8 gText_Starter_Wynaut[];
+extern const u8 gText_Starter_Natu[];
+extern const u8 gText_Starter_Ralts[];
+
+extern const u8 gText_Starter_Shuppet[];
+extern const u8 gText_Starter_Duskull[];
+extern const u8 gText_Starter_Gastly[];
+extern const u8 gText_Starter_Sableye[];
+extern const u8 gText_Starter_Misdreavus[];
+
+extern const u8 gText_Starter_Poochyena[];
+extern const u8 gText_Starter_Absol[];
+extern const u8 gText_Starter_Murkrow[];
+extern const u8 gText_Starter_Sneasel[];
+
+extern const u8 gText_Starter_Dratini[];
+extern const u8 gText_Starter_Bagon[];
+
+extern const u8 gText_Starter_Ditto[];
+extern const u8 gText_Starter_Magikarp[];
+extern const u8 gText_Starter_Smeargle[];
+extern const u8 gText_Starter_Unown[];
+
 extern const u8 gText_WithdrawPokemon[];
 extern const u8 gText_WithdrawMonDescription[];
 extern const u8 gText_DepositPokemon[];
@@ -316,6 +493,7 @@ extern const u8 gText_Sound[];
 extern const u8 gText_Frame[];
 extern const u8 gText_OptionMenuCancel[];
 extern const u8 gText_ButtonMode[];
+extern const u8 gText_NGPlus[];
 
 extern const u8 gText_MaleSymbol[];
 extern const u8 gText_FemaleSymbol[];
@@ -334,6 +512,7 @@ extern const u8 gText_MainMenuContinue[];
 extern const u8 gText_MainMenuMysteryGift2[];
 extern const u8 gText_MainMenuMysteryEvents[];
 extern const u8 gText_MainMenuMysteryGift[];
+extern const u8 gText_MainMenuNewGamePlus[];
 extern const u8 gText_WirelessNotConnected[];
 extern const u8 gText_MysteryGiftCantUse[];
 extern const u8 gText_MysteryEventsCantUse[];
@@ -3020,5 +3199,9 @@ extern const u8 gText_Summary2[];
 extern const u8 gText_PkmnForSwap[];
 extern const u8 gText_SamePkmnInPartyAlready[];
 extern const u8 gText_Cancel3[];
+
+extern const u8 gText_Anabel_OtherCreatures[];
+extern const u8 gText_Anabel_AltUniverses[];
+extern const u8 gText_Anabel_Nothing[];
 
 #endif // GUARD_STRINGS_H

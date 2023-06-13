@@ -11640,6 +11640,51 @@ static const struct TrainerMonItemCustomMoves sParty_Steven[] = {
     }
 };
 
+static const struct TrainerMonItemCustomMoves sParty_StrangeGentleman[] = {
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_WOBBUFFET,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_DESTINY_BOND, MOVE_EXPLOSION}
+    },
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_LINOONE,
+    .heldItem = ITEM_CHESTO_BERRY,
+    .moves = {MOVE_BELLY_DRUM, MOVE_REST, MOVE_ROLLOUT, MOVE_DOUBLE_EDGE}
+    },
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_SHEDINJA,
+    .heldItem = ITEM_QUICK_CLAW,
+    .moves = {MOVE_CONFUSE_RAY, MOVE_SAND_ATTACK, MOVE_MINIMIZE, MOVE_TOXIC}
+    },
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_SLAKING,
+    .heldItem = ITEM_FOCUS_BAND,
+    .moves = {MOVE_REVERSAL, MOVE_SUBSTITUTE, MOVE_AMNESIA, MOVE_FOCUS_PUNCH}
+    },
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_GENGAR,
+    .heldItem = ITEM_SPELL_TAG,
+    .moves = {MOVE_HYPNOSIS, MOVE_DREAM_EATER, MOVE_SHADOW_BALL, MOVE_PERISH_SONG}
+    },
+    {
+    .iv = 255,
+    .lvl = 80,
+    .species = SPECIES_MILOTIC,
+    .heldItem = ITEM_SCOPE_LENS,
+    .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_TAIL_GLOW, MOVE_PROTECT}
+    }
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_Anabel[] = {
     {
     .iv = 0,

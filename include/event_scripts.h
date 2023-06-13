@@ -612,4 +612,9 @@ extern const u8 EventScript_TradeCenter_Chair0[];
 extern const u8 EventScript_ConfirmLeaveCableClubRoom[];
 extern const u8 EventScript_TerminateLink[];
 
+extern const u8 EventScript_ExplainNGPlus[];
+extern const u8 EventScript_DeclineNGPlus[];
+extern const u8 EventText_NGPlus[];
+extern const u8 EventText_LetUsBegin[];
+
 #endif // GUARD_EVENT_SCRIPTS_H

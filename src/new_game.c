@@ -46,6 +46,8 @@
 #include "union_room_chat.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
+extern const u8 EventScript_NGPlusPreload[];
+extern const u8 EventScript_ActivateNGPlus[];
 
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
@@ -203,6 +205,50 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+}
+
+void NewGamePlusInitData(void)
+{
+	u32 muns = GetMoney(&gSaveBlock1Ptr->money);
+	
+    if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
+        RtcReset();
+	
+    gDifferentSaveFile = TRUE;
+	ApplyNewEncryptionKeyToAllEncryptedData(0);
+    gSaveBlock2Ptr->encryptionKey = 0;
+    ZeroEnemyPartyMons();
+    ClearSav1_NGPlus();
+    ClearAllMail();
+    gSaveBlock2Ptr->specialSaveWarpFlags = 0;
+    gSaveBlock2Ptr->gcnLinkFlags = 0;
+    InitPlayerTrainerId();
+    InitEventData();
+    ClearTVShowData();
+    ResetGabbyAndTy();
+    ClearBerryTrees();
+	SetMoney(&gSaveBlock1Ptr->money, muns);
+    ResetLinkContestBoolean();
+    ClearAllContestWinnerPics();
+	//gPlayerPartyCount = 0;
+   // ZeroPlayerPartyMons();
+    ClearRoamerData();
+    ClearRoamerLocationData();
+    gSaveBlock1Ptr->registeredItem = 0;
+    ClearItemSlots(gBagPockets[KEYITEMS_POCKET].itemSlots, gBagPockets[KEYITEMS_POCKET].capacity);
+    SetMauvilleOldMan();
+    InitDewfordTrend();
+    ResetFanClub();
+    ResetLotteryCorner();
+	SetMoney(&gSaveBlock1Ptr->money, muns);
+    WarpToTruck();
+    ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
+	ScriptContext2_RunNewScript(EventScript_NGPlusPreload);
+    InitUnionRoomChatRegisteredTexts();
+    InitLilycoveLady();
+    ResetAllApprenticeData();
+    InitMatchCallCounters();
+    ClearMysteryGift();
 }
 
 static void ResetMiniGamesRecords(void)

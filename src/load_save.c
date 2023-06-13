@@ -14,7 +14,7 @@
 #include "decoration_inventory.h"
 #include "agb_flash.h"
 
-static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
+void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
 
 #define SAVEBLOCK_MOVE_RANGE    128
 
@@ -64,6 +64,95 @@ void ClearSav2(void)
 void ClearSav1(void)
 {
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1DMA));
+}
+
+void ClearSav1_NGPlus(void)
+{
+	u8* oldDex = malloc(NUM_DEX_FLAG_BYTES * 4);
+	
+	int i;
+	struct ItemSlot *newItems = malloc(120);
+	struct ItemSlot *newBalls = malloc(64); // *slashing noises* check your balls
+	struct ItemSlot *newTMs = malloc(256);
+	struct ItemSlot *newBerries = malloc(184);
+	struct ItemSlot *newPCItems = malloc(200);
+	//struct SecretBase *oldBases = malloc();
+	
+	for (i = 0; i < NUM_DEX_FLAG_BYTES; i++)
+	{
+		oldDex[i] = gSaveBlock1Ptr->seen1[i];
+		oldDex[i + NUM_DEX_FLAG_BYTES] = gSaveBlock1Ptr->seen2[i];
+		oldDex[i + NUM_DEX_FLAG_BYTES*2] = gSaveBlock2Ptr->pokedex.owned[i];
+		oldDex[i + NUM_DEX_FLAG_BYTES*3] = gSaveBlock2Ptr->pokedex.seen[i];
+	}
+	
+	for (i = 0; i < BAG_ITEMS_COUNT; i++)
+	{
+		newItems[i] = gSaveBlock1Ptr->bagPocket_Items[i];
+	}
+	
+	for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
+	{
+		newBalls[i] = gSaveBlock1Ptr->bagPocket_PokeBalls[i];
+	}
+	
+	for (i = 0; i < BAG_TMHM_COUNT; i++)
+	{
+		newTMs[i] = gSaveBlock1Ptr->bagPocket_TMHM[i];
+	}
+	
+	for (i = 0; i < BAG_BERRIES_COUNT; i++)
+	{
+		newBerries[i] = gSaveBlock1Ptr->bagPocket_Berries[i];
+	}
+	
+	for (i = 0; i < PC_ITEMS_COUNT; i++)
+	{
+		newPCItems[i] = gSaveBlock1Ptr->pcItems[i];
+	}
+	
+    CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1DMA));
+	
+	for (i = 0; i < NUM_DEX_FLAG_BYTES; i++)
+	{
+		gSaveBlock1Ptr->seen1[i] = oldDex[i];
+		gSaveBlock1Ptr->seen2[i] = oldDex[i + NUM_DEX_FLAG_BYTES];
+		gSaveBlock2Ptr->pokedex.owned[i] = oldDex[i + NUM_DEX_FLAG_BYTES*2];
+		gSaveBlock2Ptr->pokedex.seen[i] = oldDex[i + NUM_DEX_FLAG_BYTES*3];
+	}
+	
+	free(oldDex);
+	
+	for (i = 0; i < BAG_ITEMS_COUNT; i++)
+	{
+		gSaveBlock1Ptr->bagPocket_Items[i] = newItems[i];
+	}
+	
+	for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
+	{
+		gSaveBlock1Ptr->bagPocket_PokeBalls[i] = newBalls[i];
+	}
+	
+	for (i = 0; i < BAG_TMHM_COUNT; i++)
+	{
+		gSaveBlock1Ptr->bagPocket_TMHM[i] = newTMs[i];
+	}
+	
+	for (i = 0; i < BAG_BERRIES_COUNT; i++)
+	{
+		gSaveBlock1Ptr->bagPocket_Berries[i] = newBerries[i];
+	}
+	
+	for (i = 0; i < PC_ITEMS_COUNT; i++)
+	{
+		gSaveBlock1Ptr->pcItems[i] = newPCItems[i];
+	}
+	
+	free(newItems);
+	free(newBalls);
+	free(newTMs);
+	free(newBerries);
+	free(newPCItems);
 }
 
 // Offset is the sum of the trainer id bytes
@@ -283,7 +372,7 @@ void ApplyNewEncryptionKeyToWord(u32 *word, u32 newKey)
     *word ^= newKey;
 }
 
-static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey)
+void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey)
 {
     ApplyNewEncryptionKeyToGameStats(encryptionKey);
     ApplyNewEncryptionKeyToBagItems_(encryptionKey);

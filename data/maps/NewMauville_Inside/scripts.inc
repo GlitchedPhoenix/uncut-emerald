@@ -22,6 +22,13 @@ NewMauville_Inside_OnTransition:
 	call_if_unset FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb1
 	call_if_unset FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb2
 	call_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb3
+	call_if_unset FLAG_CAUGHT_ZAPDOS, NewMauville_EventScript_TryShowZapdos
+	end
+
+NewMauville_EventScript_TryShowZapdos::
+	call_if_set FLAG_DEFEATED_ZAPDOS, Common_EventScript_NopReturn
+	call_if_unset FLAG_ACTIVATE_ORDER_66, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_ZAPDOS
 	end
 
 NewMauville_Inside_EventScript_ShowVoltorb1::
@@ -38,6 +45,49 @@ NewMauville_Inside_EventScript_ShowVoltorb3::
 
 NewMauville_Inside_OnLoad:
 	call_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_unset FLAG_HIDE_ZAPDOS, NewMauville_EventScript_CheckZapdos
+	end
+
+NewMauville_EventScript_CheckZapdos::
+	call_if_set FLAG_CAUGHT_ZAPDOS, NewMauville_EventScript_HideZapdos
+	call_if_set FLAG_DEFEATED_ZAPDOS, NewMauville_EventScript_HideZapdos
+	call_if_unset FLAG_ACTIVATE_ORDER_66, NewMauville_EventScript_HideZapdos
+	end
+
+NewMauville_EventScript_Zapdos::
+	lock
+	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, 9
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	seteventmon SPECIES_ZAPDOS, 50
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NewMauville_EventScript_DefeatedZapdos
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NewMauville_EventScript_RanZapdos
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NewMauville_EventScript_RanZapdos
+	setflag FLAG_CAUGHT_ZAPDOS
+	release
+	end
+
+NewMauville_EventScript_DefeatedZapdos::
+	setflag FLAG_DEFEATED_ZAPDOS
+	setflag FLAG_HIDE_ZAPDOS
+	setvar VAR_0x8004, SPECIES_ZAPDOS
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+NewMauville_EventScript_RanZapdos::
+	setflag FLAG_HIDE_ZAPDOS
+	setvar VAR_0x8004, SPECIES_ZAPDOS
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+NewMauville_EventScript_HideZapdos::
+	setflag FLAG_HIDE_ZAPDOS
 	end
 
 NewMauville_Inside_EventScript_BlueButton::
@@ -173,25 +223,6 @@ NewMauville_Inside_EventScript_GeneratorOff::
 	releaseall
 	end
 
-NewMauville_Inside_EventScript_Voltorb1::
-	lock
-	faceplayer
-	setwildbattle SPECIES_VOLTORB, 25
-	waitse
-	playmoncry SPECIES_VOLTORB, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	dowildbattle
-	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NewMauville_Inside_EventScript_DefeatedVoltorb1
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NewMauville_Inside_EventScript_DefeatedVoltorb1
-	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NewMauville_Inside_EventScript_DefeatedVoltorb1
-	setflag FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE
-	release
-	end
-
 NewMauville_Inside_EventScript_DefeatedVoltorb1::
 	setflag FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE
 	goto Common_EventScript_RemoveStaticPokemon
@@ -261,3 +292,4 @@ NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped:
 	.string "… … … … … … … …\p"
 	.string "The generator appears to have\n"
 	.string "stopped…$"
+

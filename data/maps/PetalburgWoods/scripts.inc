@@ -2,7 +2,60 @@
 .set LOCALID_DEVON_EMPLOYEE, 4
 
 PetalburgWoods_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgWoods_EventScript_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, PetalburgWoods_EventScript_OnResume
 	.byte 0
+
+PetalburgWoods_EventScript_OnTransition::
+	call_if_set FLAG_CAUGHT_CELEBI, PetalburgWoods_EventScript_HideCelebi
+	call_if_unset FLAG_ACTIVATE_ORDER_66, PetalburgWoods_EventScript_HideCelebi
+	call_if_unset FLAG_CAUGHT_CELEBI, PetalburgWoods_EventScript_TryShowCelebi
+	end
+
+PetalburgWoods_EventScript_HideCelebi::
+	setflag FLAG_HIDE_CELEBI
+	end
+
+PetalburgWoods_EventScript_TryShowCelebi::
+	goto_if_set FLAG_DEFEATED_CELEBI, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_CELEBI
+	return
+
+PetalburgWoods_EventScript_OnResume::
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Legend_EventScript_TryRemoveObject
+	end
+
+PetalburgWoods_EventScript_Celebi::
+	lock
+	playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, 14
+	seteventmon SPECIES_CELEBI, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, PetalburgWoods_EventScript_DefeatedCelebi
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, PetalburgWoods_EventScript_RanCelebi
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, PetalburgWoods_EventScript_RanCelebi
+	setflag FLAG_CAUGHT_CELEBI
+	release
+	end
+
+PetalburgWoods_EventScript_DefeatedCelebi::
+	setflag FLAG_DEFEATED_CELEBI
+	setflag FLAG_HIDE_CELEBI
+	setvar VAR_0x8004, SPECIES_CELEBI
+	goto Common_EventScript_LegendaryFlewAway
+	end
+
+PetalburgWoods_EventScript_RanCelebi::
+	setflag FLAG_HIDE_CELEBI
+	setvar VAR_0x8004, SPECIES_CELEBI
+	goto Common_EventScript_LegendaryFlewAway
+	end
 
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall

@@ -16,7 +16,22 @@ NavelRock_Bottom_EventScript_HideLugia::
 
 NavelRock_Bottom_EventScript_TryShowLugia::
 	goto_if_set FLAG_DEFEATED_LUGIA, Common_EventScript_NopReturn
+	call_if_unset FLAG_DEFEATED_MOLTRES, NavelRock_CheckMoltres
+	call_if_unset FLAG_DEFEATED_ZAPDOS, NavelRock_CheckZapdos
+	call_if_unset FLAG_DEFEATED_ARTICUNO, NavelRock_CheckArticuno
 	clearflag FLAG_HIDE_LUGIA
+	return
+
+NavelRock_CheckMoltres::
+	goto_if_unset FLAG_CAUGHT_MOLTRES, Common_EventScript_NopReturn
+	return
+
+NavelRock_CheckZapdos::
+	goto_if_unset FLAG_CAUGHT_ZAPDOS, Common_EventScript_NopReturn
+	return
+
+NavelRock_CheckArticuno::
+	goto_if_unset FLAG_CAUGHT_ARTICUNO, Common_EventScript_NopReturn
 	return
 
 NavelRock_Bottom_OnResume:
@@ -53,7 +68,7 @@ NavelRock_Bottom_EventScript_Lugia::
 	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	delay 20
-	seteventmon SPECIES_LUGIA, 70
+	seteventmon SPECIES_LUGIA, 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

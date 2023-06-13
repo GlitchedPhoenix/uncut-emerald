@@ -113,6 +113,7 @@ static u8 GetLastAlphabetColumn(u8);
 static void ReduceToValidWordSelectColumn(void);
 static bool8 IsSelectedWordIndexInvalid(void);
 static int DidPlayerInputMysteryGiftPhrase(void);
+static int DidPlayerInputNGPlusPhrase(void);
 static u16 DidPlayerInputABerryMasterWifePhrase(void);
 static bool8 InitEasyChatScreenControl_(void);
 static void LoadEasyChatPalettes(void);
@@ -666,6 +667,18 @@ static const struct EasyChatScreenTemplate sEasyChatScreenTemplates[] = {
         .confirmText1 = gText_TheAnswer,
         .confirmText2 = gText_IsAsShownOkay,
     },
+	{
+        .type = EASY_CHAT_TYPE_NGPLUS_PASSWORD,
+        .numColumns = 2,
+        .numRows = 1,
+        .frameId = FRAMEID_COMBINE_TWO_WORDS,
+        .fourFooterOptions = FALSE,
+        .titleText = gText_MachinePassword,
+        .instructionsText1 = gText_PleaseEnterThePassword,
+        .instructionsText2 = gText_ToAccessTheTerminal,
+        .confirmText1 = gText_ThePassword,
+        .confirmText2 = gText_IsThisCorrect,
+    },
 };
 
 // IDs are used indirectly as indexes into gEasyChatWordsByLetterPointers
@@ -683,6 +696,11 @@ static const u16 sMysteryGiftPhrase[NUM_QUESTIONNAIRE_WORDS] = {
     EC_WORD_TOGETHER,
     EC_WORD_WITH,
     EC_WORD_ALL,
+};
+
+static const u16 sNGPlusPhrase[2] = {
+    EC_POKEMON(WINGULL),
+    EC_MOVE2(REST),
 };
 
 static const u16 sBerryMasterWifePhrases[][2] = {
@@ -1520,6 +1538,10 @@ void ShowEasyChatScreen(void)
         break;
     case EASY_CHAT_TYPE_QUESTIONNAIRE:
         words = GetQuestionnaireWordsPtr();
+        break;
+	case EASY_CHAT_TYPE_NGPLUS_PASSWORD:
+        words = (u16 *)gStringVar3;
+        InitializeEasyChatWordArray(words, 2);
         break;
     default:
         return;
@@ -2957,6 +2979,12 @@ static void SetSpecialEasyChatResult(void)
         else
             gSpecialVar_0x8004 = 0;
         break;
+	case EASY_CHAT_TYPE_NGPLUS_PASSWORD:
+        if (DidPlayerInputNGPlusPhrase())
+            gSpecialVar_0x8004 = 2;
+        else
+            gSpecialVar_0x8004 = 0;
+        break;
     case EASY_CHAT_TYPE_TRENDY_PHRASE:
         BufferCurrentPhraseToStringVar2();
         gSpecialVar_0x8004 = TrySetTrendyPhrase(sEasyChatScreen->currentPhrase);
@@ -2970,6 +2998,11 @@ static void SetSpecialEasyChatResult(void)
 static int DidPlayerInputMysteryGiftPhrase(void)
 {
     return !IsPhraseDifferentThanPlayerInput(sMysteryGiftPhrase, ARRAY_COUNT(sMysteryGiftPhrase));
+}
+
+static int DidPlayerInputNGPlusPhrase(void)
+{
+    return !IsPhraseDifferentThanPlayerInput(sNGPlusPhrase, ARRAY_COUNT(sNGPlusPhrase));
 }
 
 static u16 DidPlayerInputABerryMasterWifePhrase(void)

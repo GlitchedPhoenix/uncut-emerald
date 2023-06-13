@@ -16,6 +16,7 @@ TerraCave_End_EventScript_TryRemoveGroudon::
 	return
 
 TerraCave_End_OnTransition:
+	goto_if_set FLAG_CAUGHT_GROUDON, Common_EventScript_NopReturn
 	call_if_unset FLAG_DEFEATED_GROUDON, TerraCave_End_EventScript_ShowGroudon
 	end
 
@@ -35,7 +36,7 @@ TerraCave_End_EventScript_Groudon::
 	delay 40
 	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_GROUDON
-	setwildbattle SPECIES_GROUDON, 70
+	setwildbattle SPECIES_GROUDON, 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -46,7 +47,7 @@ TerraCave_End_EventScript_Groudon::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, TerraCave_End_EventScript_RanFromGroudon
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, TerraCave_End_EventScript_RanFromGroudon
 	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	setflag FLAG_DEFEATED_GROUDON
+	setflag FLAG_CAUGHT_GROUDON
 	releaseall
 	end
 
@@ -58,7 +59,7 @@ TerraCave_End_EventScript_DefeatedGroudon::
 
 TerraCave_End_EventScript_RanFromGroudon::
 	setvar VAR_0x8004, SPECIES_GROUDON
-	goto Common_EventScript_LegendaryFlewAway
+	goto Common_EventScript_LegendaryDisappeared
 	end
 
 TerraCave_End_Movement_GroudonApproach:

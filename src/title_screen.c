@@ -808,8 +808,8 @@ static void UpdateLegendaryMarkingColor(u8 frameNum)
     {
         s32 intensity = Cos(frameNum, 128) + 128;
         s32 r = 31 - ((intensity * 32 - intensity) / 256);
-        s32 g = 31 - (intensity * 22 / 256);
-        s32 b = 12;
+        s32 g = 22 - (intensity * 22 / 256);
+        s32 b = 0;
 
         u16 color = RGB(r, g, b);
         LoadPalette(&color, 0xEF, sizeof(color));

@@ -1,0 +1,4 @@
+EnteiRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_EnteiChamber_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, MagmaHideout_EnteiChamber_OnResume
+	.byte 0

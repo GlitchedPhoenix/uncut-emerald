@@ -570,7 +570,8 @@ gStdScripts_End::
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
-
+	
+	.include "data/scripts/debug.inc"
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"
@@ -580,6 +581,31 @@ EventScript_WhiteOut::
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	goto EventScript_ResetMrBriney
 	end
+
+EventScript_ExplainNGPlus::
+	msgbox EventText_NGPlus, MSGBOX_DEFAULT
+	multichoicedefault 10, 20, MULTI_YESNO, 0, TRUE
+	switch VAR_RESULT
+	case 1, EventScript_DeclineNGPlus
+	setflag FLAG_NEW_GAME_PLUS_ACTIVE
+	end
+
+EventScript_DeclineNGPlus::
+	end
+
+EventText_NGPlus::
+	.string "New Game+ is a mode that allows you to\n"
+	.string "go back through the game with certain\l"
+	.string "data kept from your previous save.\p"
+	.string "This includes your money, disposable\n"
+	.string "items, Pokedex progress, decorations,\l"
+	.string "certain records, as well as boosting\l"
+	.string "your chances of finding a shiny.\p"
+	.string "Your current party will get deposited\n"
+	.string "to your PC.$"
+
+EventText_LetUsBegin::
+	.string "Very well. Then let us begin.$"
 
 EventScript_ResetMrBriney::
 	goto_if_eq VAR_BRINEY_LOCATION, 1, EventScript_MoveMrBrineyToHouse
@@ -950,6 +976,12 @@ gText_Sudowoodo_Attacked::
 gText_LegendaryFlewAway::
 	.string "The {STR_VAR_1} flew away!$"
 
+gText_LegendaryRanAway::
+	.string "The {STR_VAR_1} ran away!$"
+
+gText_LegendaryDisappeared::
+	.string "The {STR_VAR_1} disappeared!$"
+
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/questionnaire.inc"
 	.include "data/text/abnormal_weather.inc"
@@ -997,6 +1029,24 @@ Common_EventScript_LegendaryFlewAway::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
+	release
+	end
+
+Common_EventScript_LegendaryRanAway::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	bufferspeciesname STR_VAR_1, VAR_0x8004
+	msgbox gText_LegendaryRanAway, MSGBOX_DEFAULT
+	release
+	end
+
+Common_EventScript_LegendaryDisappeared::
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers FADE_FROM_BLACK
+	bufferspeciesname STR_VAR_1, VAR_0x8004
+	msgbox gText_LegendaryDisappeared, MSGBOX_DEFAULT
 	release
 	end
 
@@ -1055,3 +1105,26 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/scripts/starterpick.inc"
+
+	.include "data/maps/DebugRoom/scripts.inc"
+
+	.include "data/maps/MagmaHideout_EnteiChamber/scripts.inc"
+
+	.include "data/maps/AquaHideout_RaikouChamber/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/AbandonedShip_SuicuneChamber/scripts.inc"
+
+	.include "data/maps/EnteiRoom/scripts.inc"
+
+	.include "data/maps/RoomBeyondTime/scripts.inc"
+
+	.include "data/maps/OneIsland/scripts.inc"
+
+	.include "data/maps/TwoIsland/scripts.inc"
+
+	.include "data/maps/TreasureBeach/scripts.inc"
+
+	.include "data/maps/KindleRoad/scripts.inc"

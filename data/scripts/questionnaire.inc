@@ -7,7 +7,6 @@ EventScript_Questionnaire::
 	lock
 	faceplayer
 	specialvar VAR_0x8008, GetMartEmployeeObjectEventId
-	goto_if_eq VAR_0x8004, 1, Questionnaire_EventScript_PlayerInputMysteryEventPhrase
 	goto_if_eq VAR_0x8004, 2, Questionnaire_EventScript_PlayerInputMysteryGiftPhrase
 	goto_if_eq VAR_RESULT, 0, Questionnaire_EventScript_Release
 	goto_if_eq VAR_RESULT, 1, Questionnaire_EventScript_ThankYou

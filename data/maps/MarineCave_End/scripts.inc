@@ -16,6 +16,7 @@ MarineCave_End_EventScript_TryRemoveKyogre::
 	return
 
 MarineCave_End_OnTransition:
+	call_if_set FLAG_CAUGHT_KYOGRE, Common_EventScript_NopReturn
 	call_if_unset FLAG_DEFEATED_KYOGRE, MarineCave_End_EventScript_ShowKyogre
 	end
 
@@ -35,7 +36,7 @@ MarineCave_End_EventScript_Kyogre::
 	delay 40
 	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_KYOGRE
-	setwildbattle SPECIES_KYOGRE, 70
+	setwildbattle SPECIES_KYOGRE, 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -46,7 +47,7 @@ MarineCave_End_EventScript_Kyogre::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MarineCave_End_EventScript_RanFromKyogre
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MarineCave_End_EventScript_RanFromKyogre
 	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	setflag FLAG_DEFEATED_KYOGRE
+	setflag FLAG_CAUGHT_KYOGRE
 	releaseall
 	end
 
@@ -58,7 +59,7 @@ MarineCave_End_EventScript_DefeatedKyogre::
 
 MarineCave_End_EventScript_RanFromKyogre::
 	setvar VAR_0x8004, SPECIES_KYOGRE
-	goto Common_EventScript_LegendaryFlewAway
+	goto Common_EventScript_LegendaryDisappeared
 	end
 
 MarineCave_End_Movement_KyogreApproach:

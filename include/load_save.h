@@ -37,6 +37,7 @@ extern struct PokemonStorage *gPokemonStoragePtr;
 void CheckForFlashMemory(void);
 void ClearSav2(void);
 void ClearSav1(void);
+void ClearSav1_NGPlus(void);
 void SetSaveBlocksPointers(u16 offset);
 void MoveSaveBlocks_ResetHeap(void);
 u32 UseContinueGameWarp(void);
@@ -54,5 +55,6 @@ void LoadPlayerBag(void);
 void SavePlayerBag(void);
 void ApplyNewEncryptionKeyToHword(u16 *hWord, u32 newKey);
 void ApplyNewEncryptionKeyToWord(u32 *word, u32 newKey);
+void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
 
 #endif // GUARD_LOAD_SAVE_H

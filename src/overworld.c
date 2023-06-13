@@ -1524,7 +1524,10 @@ void CB2_NewGame(void)
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
-    NewGameInitData();
+	if (FlagGet(FLAG_NEW_GAME_PLUS_ACTIVE))
+		NewGamePlusInitData();
+	else
+		NewGameInitData();
     ResetInitialPlayerAvatarState();
     PlayTimeCounter_Start();
     ScriptContext1_Init();

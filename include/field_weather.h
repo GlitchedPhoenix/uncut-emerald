@@ -220,6 +220,10 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void Bubbles2_InitVars(void);
+void Bubbles2_Main(void);
+void Bubbles2_InitAll(void);
+bool8 Bubbles2_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);

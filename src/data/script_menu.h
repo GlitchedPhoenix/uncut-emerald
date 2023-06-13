@@ -275,6 +275,20 @@ static const struct MenuAction MultichoiceList_GameCornerTMs[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_DebugMenu[] =
+{
+    {gText_Debug_HMKit},
+    {gText_Debug_Warp},
+    {gText_Debug_Repel},
+};
+
+static const struct MenuAction MultichoiceList_DebugWarp[] =
+{
+    {gText_DWarp_Littleroot},
+	{gText_DWarp_NavelRock},
+	{gText_DWarp_OneIsland},
+};
+
 static const struct MenuAction MultichoiceList_GameCornerCoins[] =
 {
     {gText_50CoinsAndPrice},
@@ -782,6 +796,279 @@ struct MultichoiceListStruct
     u8 count;
 };
 
+static const struct MenuAction MultichoiceList_StartersPage1[] =
+{
+    {gText_Starter_Classic1},
+    {gText_Starter_Classic2},
+    {gText_Starter_Normal},
+    {gText_Starter_Fire},
+	{gText_Starter_Water},
+    {gText_NextPage},
+};
+
+static const struct MenuAction MultichoiceList_StartersPage2[] =
+{
+    {gText_Starter_Grass},
+    {gText_Starter_Electric},
+    {gText_Starter_Ice},
+    {gText_Starter_Rock},
+	{gText_Starter_Ground},
+    {gText_NextPage},
+};
+
+static const struct MenuAction MultichoiceList_StartersPage3[] =
+{
+    {gText_Starter_Poison},
+    {gText_Starter_Flying},
+    {gText_Starter_Bug},
+    {gText_Starter_Fighting},
+	{gText_Starter_Steel},
+    {gText_NextPage},
+};
+
+static const struct MenuAction MultichoiceList_StartersPage4[] =
+{
+    {gText_Starter_Psychic},
+    {gText_Starter_Ghost},
+    {gText_Starter_Dark},
+    {gText_Starter_Dragon},
+	{gText_Starter_Pain},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersClassic1[] =
+{
+    {gText_Starter_Bulbasaur},
+    {gText_Starter_Charmander},
+    {gText_Starter_Squirtle},
+    {gText_Starter_Chikorita},
+	{gText_Starter_Cyndaquil},
+	{gText_Starter_Totodile},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersClassic2[] =
+{
+    {gText_Starter_Treecko},
+    {gText_Starter_Torchic},
+    {gText_Starter_Mudkip},
+    {gText_Starter_Pikachu},
+	{gText_Starter_Eevee},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersNormal[] =
+{
+    {gText_Starter_Rattata},
+    {gText_Starter_Sentret},
+    {gText_Starter_Togepi},
+    {gText_Starter_Zigzagoon},
+	{gText_Starter_Whismur},
+	{gText_Starter_Skitty},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersFire[] =
+{
+    {gText_Starter_Vulpix},
+    {gText_Starter_Growlithe},
+    {gText_Starter_Ponyta},
+    {gText_Starter_Slugma},
+	{gText_Starter_Houndour},
+	{gText_Starter_Numel},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersWater[] =
+{
+    {gText_Starter_Poliwag},
+    {gText_Starter_Psyduck},
+    {gText_Starter_Slowpoke},
+    {gText_Starter_Shellder},
+	{gText_Starter_Marill},
+	{gText_Starter_Clamperl},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersGrass[] =
+{
+    {gText_Starter_Oddish},
+    {gText_Starter_Bellsprout},
+    {gText_Starter_Exeggcute},
+    {gText_Starter_Hoppip},
+	{gText_Starter_Shroomish},
+	{gText_Starter_Cacnea},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersElectric[] =
+{
+    {gText_Starter_Voltorb},
+    {gText_Starter_Magnemite},
+    {gText_Starter_Mareep},
+    {gText_Starter_Elekid},
+	{gText_Starter_Chinchou},
+	{gText_Starter_Electrike},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersIce[] =
+{
+    {gText_Starter_Seel},
+    {gText_Starter_Lapras},
+    {gText_Starter_Swinub},
+    {gText_Starter_Delibird},
+	{gText_Starter_Snorunt},
+	{gText_Starter_Spheal},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersRock[] =
+{
+    {gText_Starter_Geodude},
+    {gText_Starter_Omanyte},
+    {gText_Starter_Kabuto},
+    {gText_Starter_Larvitar},
+	{gText_Starter_Anorith},
+	{gText_Starter_Lileep},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersGround[] =
+{
+    {gText_Starter_Onix},
+    {gText_Starter_Sandshrew},
+    {gText_Starter_Rhyhorn},
+    {gText_Starter_Cubone},
+	{gText_Starter_Phanpy},
+	{gText_Starter_Trapinch},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersPoison[] =
+{
+    {gText_Starter_NidoranM},
+    {gText_Starter_NidoranF},
+    {gText_Starter_Ekans},
+    {gText_Starter_Zubat},
+	{gText_Starter_Gulpin},
+	{gText_Starter_Seviper},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersFlying[] =
+{
+    {gText_Starter_Pidgey},
+    {gText_Starter_Spearow},
+    {gText_Starter_Doduo},
+    {gText_Starter_Hoothoot},
+	{gText_Starter_Tailow},
+	{gText_Starter_Swablu},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersBug[] =
+{
+    {gText_Starter_Caterpie},
+    {gText_Starter_Weedle},
+    {gText_Starter_Scyther},
+    {gText_Starter_Ledyba},
+	{gText_Starter_Spinarak},
+	{gText_Starter_Nincada},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersSteel[] =
+{
+    {gText_Starter_Skarmory},
+    {gText_Starter_Mawile},
+    {gText_Starter_Aron},
+    {gText_Starter_Beldum},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersFighting[] =
+{
+    {gText_Starter_Machop},
+    {gText_Starter_Mankey},
+    {gText_Starter_Tyrogue},
+    {gText_Starter_Heracross},
+	{gText_Starter_Makuhita},
+	{gText_Starter_Meditite},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersPsychic[] =
+{
+    {gText_Starter_Abra},
+    {gText_Starter_Drowzee},
+    {gText_Starter_Natu},
+    {gText_Starter_Wynaut},
+	{gText_Starter_Spoink},
+	{gText_Starter_Ralts},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersGhost[] =
+{
+    {gText_Starter_Gastly},
+    {gText_Starter_Misdreavus},
+    {gText_Starter_Duskull},
+    {gText_Starter_Shuppet},
+	{gText_Starter_Sableye},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersDark[] =
+{
+    {gText_Starter_Murkrow},
+    {gText_Starter_Sneasel},
+    {gText_Starter_Poochyena},
+    {gText_Starter_Absol},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersDragon[] =
+{
+    {gText_Starter_Dratini},
+    {gText_Starter_Bagon},
+    {gText_Back},
+};
+
+static const struct MenuAction MultichoiceList_StartersPain[] =
+{
+    {gText_Starter_Magikarp},
+	{gText_Starter_Ditto},
+    {gText_Starter_Smeargle},
+	{gText_Starter_Unown},
+    {gText_Why},
+};
+
+static const struct MenuAction MultichoiceList_WhatsInSpace[] =
+{
+    {gText_Anabel_OtherCreatures},
+	{gText_Anabel_AltUniverses},
+    {gText_Anabel_Nothing},
+};
+
+static const struct MenuAction MultichoiceList_Entries[] =
+{
+    {gText_Entry1},
+    {gText_Entry2},
+	{gText_Entry3},
+	{gText_Entry4},
+	{gText_Entry5},
+	{gText_Cancel},
+};
+
+static const struct MenuAction MultichoiceList_GentlemanAnswers[] =
+{
+    {gText_WhatsPassword},
+    {gText_WhatsTime},
+	{gText_WildRose},
+	{gText_NoQuestion},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -840,6 +1127,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SSTIDAL_BATTLE_FRONTIER]    = MULTICHOICE(MultichoiceList_SSTidalBattleFrontier),
     [MULTI_RIGHTLEFT]                  = MULTICHOICE(MultichoiceList_RightLeft),
     [MULTI_GAME_CORNER_TMS]            = MULTICHOICE(MultichoiceList_GameCornerTMs),
+	[MULTI_DEBUG_MENU]                 = MULTICHOICE(MultichoiceList_DebugMenu),
+	[MULTI_DEBUG_WARP]                 = MULTICHOICE(MultichoiceList_DebugWarp),
     [MULTI_SSTIDAL_SLATEPORT_NO_BF]    = MULTICHOICE(MultichoiceList_SSTidalSlateportNoBF),
     [MULTI_FLOORS]                     = MULTICHOICE(MultichoiceList_Floors),
     [MULTI_SHARDS_R]                   = MULTICHOICE(MultichoiceList_ShardsR),
@@ -898,6 +1187,33 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+	[MULTI_STARTER_PAGE1]              = MULTICHOICE(MultichoiceList_StartersPage1),
+	[MULTI_STARTER_PAGE2]              = MULTICHOICE(MultichoiceList_StartersPage2),
+	[MULTI_STARTER_PAGE3]              = MULTICHOICE(MultichoiceList_StartersPage3),
+	[MULTI_STARTER_PAGE4]              = MULTICHOICE(MultichoiceList_StartersPage4),
+	[MULTI_STARTER_NORMAL]             = MULTICHOICE(MultichoiceList_StartersNormal),
+	[MULTI_STARTER_FIRE]               = MULTICHOICE(MultichoiceList_StartersFire),
+	[MULTI_STARTER_WATER]              = MULTICHOICE(MultichoiceList_StartersWater),
+	[MULTI_STARTER_GRASS]              = MULTICHOICE(MultichoiceList_StartersGrass),
+	[MULTI_STARTER_ELECTRIC]           = MULTICHOICE(MultichoiceList_StartersElectric),
+	[MULTI_STARTER_ICE]                = MULTICHOICE(MultichoiceList_StartersIce),
+	[MULTI_STARTER_ROCK]               = MULTICHOICE(MultichoiceList_StartersRock),
+	[MULTI_STARTER_GROUND]             = MULTICHOICE(MultichoiceList_StartersGround),
+	[MULTI_STARTER_POISON]             = MULTICHOICE(MultichoiceList_StartersPoison),
+	[MULTI_STARTER_FLYING]             = MULTICHOICE(MultichoiceList_StartersFlying),
+	[MULTI_STARTER_BUG]                = MULTICHOICE(MultichoiceList_StartersBug),
+	[MULTI_STARTER_STEEL]              = MULTICHOICE(MultichoiceList_StartersSteel),
+	[MULTI_STARTER_FIGHTING]           = MULTICHOICE(MultichoiceList_StartersFighting),
+	[MULTI_STARTER_PSYCHIC]            = MULTICHOICE(MultichoiceList_StartersPsychic),
+	[MULTI_STARTER_GHOST]              = MULTICHOICE(MultichoiceList_StartersGhost),
+	[MULTI_STARTER_DARK]               = MULTICHOICE(MultichoiceList_StartersDark),
+	[MULTI_STARTER_DRAGON]             = MULTICHOICE(MultichoiceList_StartersDragon),
+	[MULTI_STARTER_CLASSIC1]           = MULTICHOICE(MultichoiceList_StartersClassic1),
+	[MULTI_STARTER_CLASSIC2]           = MULTICHOICE(MultichoiceList_StartersClassic2),
+	[MULTI_STARTER_PAIN]               = MULTICHOICE(MultichoiceList_StartersPain),
+	[MULTI_WHATSINSPACE]               = MULTICHOICE(MultichoiceList_WhatsInSpace),
+	[MULTI_ENTRIES]                    = MULTICHOICE(MultichoiceList_Entries),
+	[MULTI_GENTLEMAN_ANSWERS]          = MULTICHOICE(MultichoiceList_GentlemanAnswers),
 };
 
 const u8 *const gStdStrings[] =

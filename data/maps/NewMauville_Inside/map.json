@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -89,8 +89,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NewMauville_Inside_EventScript_Voltorb1",
-      "flag": "FLAG_HIDE_NEW_MAUVILLE_VOLTORB_1"
+      "script": "NewMauville_Inside_EventScript_ItemMetalCoat",
+      "flag": "FLAG_ITEM_NEW_MAUVILLE_METAL_COAT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -117,6 +117,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewMauville_Inside_EventScript_Voltorb3",
       "flag": "FLAG_HIDE_NEW_MAUVILLE_VOLTORB_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ZAPDOS",
+      "x": 33,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewMauville_EventScript_Zapdos",
+      "flag": "FLAG_HIDE_ZAPDOS"
     }
   ],
   "warp_events": [
@@ -125,7 +138,14 @@
       "y": 33,
       "elevation": 3,
       "dest_map": "MAP_NEW_MAUVILLE_ENTRANCE",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_NEW_MAUVILLE_INSIDE",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

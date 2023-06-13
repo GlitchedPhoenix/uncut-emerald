@@ -157,7 +157,7 @@ $(MID_SUBDIR)/mus_evolved.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G012 -V090 -P5
 
 $(MID_SUBDIR)/mus_gsc_route38.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -V080
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V070
 
 $(MID_SUBDIR)/mus_slateport.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G079 -V070
@@ -188,6 +188,9 @@ $(MID_SUBDIR)/mus_route119.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_encounter_intense.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G062 -V078
+
+$(MID_SUBDIR)/mus_star.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V090
 
 $(MID_SUBDIR)/mus_weather_groudon.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G090 -V050
@@ -307,7 +310,7 @@ $(MID_SUBDIR)/mus_route104.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G047 -V097
 
 $(MID_SUBDIR)/mus_gsc_pewter.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -V080
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V080
 
 $(MID_SUBDIR)/mus_birch_lab.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G033 -V080

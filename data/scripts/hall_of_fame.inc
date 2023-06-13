@@ -30,6 +30,18 @@ EverGrandeCity_HallOfFame_EventScript_ResetDefeatedEventLegendaries::
 	clearflag FLAG_DEFEATED_DEOXYS
 	clearflag FLAG_DEFEATED_LUGIA
 	clearflag FLAG_DEFEATED_HO_OH
+	clearflag FLAG_DEFEATED_MOLTRES
+	clearflag FLAG_DEFEATED_ZAPDOS
+	clearflag FLAG_DEFEATED_ARTICUNO
+	clearflag FLAG_DEFEATED_ENTEI
+	clearflag FLAG_DEFEATED_RAIKOU
+	clearflag FLAG_DEFEATED_SUICUNE
+	clearflag FLAG_DEFEATED_RAYQUAZA
+	clearflag FLAG_DEFEATED_GROUDON
+	clearflag FLAG_DEFEATED_KYOGRE
+	clearflag FLAG_DEFEATED_JIRACHI
+	clearflag FLAG_DEFEATED_MEWTWO
+	clearflag FLAG_DEFEATED_CELEBI
 	return
 
 EverGrandeCity_HallOfFame_EventScript_SetDesertUnderpassCommentReady::

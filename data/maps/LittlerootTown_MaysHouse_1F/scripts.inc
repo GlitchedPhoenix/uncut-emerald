@@ -11,6 +11,14 @@ LittlerootTown_MaysHouse_1F_MapScripts::
 LittlerootTown_MaysHouse_1F_OnLoad:
 	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes
 	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual
+	call_if_unset FLAG_LATI_STARTED, LittlerootTown_CheckOrderFemale
+	end
+
+LittlerootTown_MayLati::
+	checkplayergender
+	switch VAR_RESULT
+	case FEMALE, LittlerootTown_CheckLatiCompletion
+	release
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::

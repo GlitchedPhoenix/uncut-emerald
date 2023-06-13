@@ -1386,13 +1386,23 @@ SootopolisCity_EventScript_MaxieArchieLeave::
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
 	setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
 	setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
+	setflag FLAG_ACTIVATE_ORDER_66
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
 	setvar VAR_MT_PYRE_STATE, 2
 	warpsilent MAP_SOOTOPOLIS_CITY, 31, 34
 	waitstate
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDownAndDelay
+	waitmovement 0
+	playfanfare MUS_OBTAIN_BADGE
+	message SootopolisCity_Text_AreasOpen
+	waitfanfare
 	releaseall
 	end
+
+SootopolisCity_Text_AreasOpen::
+	.string "You felt several new paths\n"
+	.string "open up to you!$"
 
 @ Unused
 SootopolisCity_Movement_Levitate::

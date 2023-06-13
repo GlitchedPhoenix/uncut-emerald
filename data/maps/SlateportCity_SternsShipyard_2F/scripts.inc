@@ -20,3 +20,11 @@ SlateportCity_SternsShipyard_2F_Text_FloatsBecauseBuoyancy:
 	.string "It floats because of a principle\n"
 	.string "called buoyancy.$"
 
+ItemEvent_OldSeaMap::
+	lock
+	giveitem ITEM_OLD_SEA_MAP
+	setflag FLAG_HIDE_OLD_SEA_MAP
+	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+	release
+	end
+

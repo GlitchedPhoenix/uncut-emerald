@@ -721,6 +721,16 @@ LittlerootTown_EventScript_MomReturnHomeFemale5::
 	waitdooranim
 	return
 
+Debug_ActivateMenu::
+	lock
+	setflag FLAG_SYS_DEBUG
+	msgbox Text_DebugActivated
+	release
+	end
+
+Text_DebugActivated::
+	.string "Debug Menu activated.$"
+
 LittlerootTown_Movement_MomApproachPlayer0:
 	walk_up
 	walk_up

@@ -2302,11 +2302,34 @@ void Bubbles_InitVars(void)
     }
 }
 
+void Bubbles2_InitVars(void)
+{
+	gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = FALSE;
+    gWeatherPtr->gammaTargetIndex = 3;
+    gWeatherPtr->gammaStepDelay = 20;
+    if (!gWeatherPtr->bubblesSpritesCreated)
+    {
+        LoadSpriteSheet(&sWeatherBubbleSpriteSheet);
+        gWeatherPtr->bubblesDelayIndex = 0;
+        gWeatherPtr->bubblesDelayCounter = sBubbleStartDelays[0];
+        gWeatherPtr->bubblesCoordsIndex = 0;
+        gWeatherPtr->bubblesSpriteCount = 0;
+    }
+}
+
 void Bubbles_InitAll(void)
 {
     Bubbles_InitVars();
     while (!gWeatherPtr->weatherGfxLoaded)
         Bubbles_Main();
+}
+
+void Bubbles2_InitAll(void)
+{
+    Bubbles2_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        Bubbles2_Main();
 }
 
 void Bubbles_Main(void)
@@ -2322,6 +2345,27 @@ void Bubbles_Main(void)
         if (++gWeatherPtr->bubblesCoordsIndex > ARRAY_COUNT(sBubbleStartCoords) - 1)
             gWeatherPtr->bubblesCoordsIndex = 0;
     }
+}
+
+void Bubbles2_Main(void)
+{
+	gWeatherPtr->weatherGfxLoaded = TRUE;
+    if (++gWeatherPtr->bubblesDelayCounter > sBubbleStartDelays[gWeatherPtr->bubblesDelayIndex])
+    {
+        gWeatherPtr->bubblesDelayCounter = 0;
+        if (++gWeatherPtr->bubblesDelayIndex > ARRAY_COUNT(sBubbleStartDelays) - 1)
+            gWeatherPtr->bubblesDelayIndex = 0;
+
+        CreateBubbleSprite(gWeatherPtr->bubblesCoordsIndex);
+        if (++gWeatherPtr->bubblesCoordsIndex > ARRAY_COUNT(sBubbleStartCoords) - 1)
+            gWeatherPtr->bubblesCoordsIndex = 0;
+    }
+}
+
+bool8 Bubbles2_Finish(void)
+{
+	DestroyBubbleSprites();
+	return FALSE;
 }
 
 bool8 Bubbles_Finish(void)
@@ -2604,6 +2648,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
+	case WEATHER_BUBBLES:            return WEATHER_BUBBLES;
     default:                         return WEATHER_NONE;
     }
 }

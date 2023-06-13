@@ -557,3 +557,19 @@ gMetatiles_UnionRoom::
 	.align 1
 gMetatileAttributes_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Sevii::
+	.incbin "data/tilesets/primary/sevii/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Sevii::
+	.incbin "data/tilesets/primary/sevii/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Islands123::
+	.incbin "data/tilesets/secondary/islands_123/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Islands123::
+	.incbin "data/tilesets/secondary/islands_123/metatile_attributes.bin"

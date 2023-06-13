@@ -8,9 +8,70 @@ LittlerootTown_BrendansHouse_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_BrendansHouse_1F_OnFrame
 	.byte 0
 
+LittlerootTown_BrendanLati::
+	checkplayergender
+	switch VAR_RESULT
+	case MALE, LittlerootTown_CheckLatiCompletion
+	release
+	end
+
+LittlerootTown_CheckLatiCompletion::
+	call_if_set FLAG_SYS_TV_LATIAS_LATIOS, LittlerootTown_LatiTV
+	release
+	end
+
+LittlerootTown_LatiTV::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
+	special TurnOffTVScreen
+	goto LittlerootTown_TV2
+	end
+
+LittlerootTown_TV2::
+	msgbox PlayersHouse_1F_Text_WhatColorDidTheySay, MSGBOX_DEFAULT
+	multichoice 22, 8, MULTI_TV_LATI, TRUE
+	copyvar VAR_0x8004, VAR_RESULT
+	special InitRoamer
+	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
+	msgbox PlayersHouse_1F_Text_StillUnknownPokemon, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	setflag FLAG_LATI_STARTED
+	setvar VAR_LATI_STATE, 2
+	clearflag FLAG_SYS_TV_LATIAS_LATIOS
+	releaseall
+	end
+
 LittlerootTown_BrendansHouse_1F_OnLoad:
 	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes
 	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual
+	call_if_unset FLAG_LATI_STARTED, LittlerootTown_CheckOrderMale
+	end
+
+LittlerootTown_CheckOrderMale::
+	checkplayergender
+	switch VAR_RESULT
+	case MALE, LittlerootTown_CheckOrder
+	end
+
+LittlerootTown_CheckOrderFemale::
+	checkplayergender
+	switch VAR_RESULT
+	case FEMALE, LittlerootTown_CheckOrder
+	end
+
+LittlerootTown_CheckOrder::
+	call_if_set FLAG_ACTIVATE_ORDER_66, LittlerootTown_TurnTVOn
+	end
+
+LittlerootTown_TurnTVOn::
+	setflag FLAG_SYS_TV_LATIAS_LATIOS
+	special TurnOnTVScreen
+	setvar VAR_LATI_STATE, 1
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes::

@@ -535,10 +535,25 @@ void BattleSetup_StartLegendaryBattle(void)
         break;
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
+	case SPECIES_ARTICUNO:
+	case SPECIES_ZAPDOS:
+	case SPECIES_MOLTRES:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
+        break;
+	case SPECIES_ENTEI:
+	case SPECIES_RAIKOU:
+	case SPECIES_SUICUNE:
+		CreateBattleStartTask(B_TRANSITION_BLUR, MUS_GSC_ROUTE38);
+        break;
+	case SPECIES_CELEBI:
+	case SPECIES_JIRACHI:
+		CreateBattleStartTask(B_TRANSITION_BLUR, MUS_VS_WILD);
         break;
     case SPECIES_MEW:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
+        break;
+	case SPECIES_MEWTWO:
+        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_RG_VS_MEWTWO);
         break;
     }
 

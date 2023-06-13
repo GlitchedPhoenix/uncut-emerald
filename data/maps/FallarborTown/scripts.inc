@@ -16,6 +16,79 @@ FallarborTown_EventScript_ExpertM::
 	release
 	end
 
+FallarborTown_EventScripts_TicketMan::
+	lock
+	faceplayer
+	goto_if_set FLAG_EON_TICKET_DELIVERED, FallarborTown_EventScripts_TicketDelivered
+	goto_if_set FLAG_EON_QUEST_STARTED, FallarborTown_EventScripts_StartedEonQuest
+	msgbox FallarborTown_Text_IGotLost
+	multichoicedefault 22, 8, MULTI_YESNO, 0, FALSE
+	switch VAR_RESULT
+	case 1, FallarborTown_EventScripts_FindSomeoneElse
+	case MULTI_B_PRESSED, FallarborTown_EventScripts_FindSomeoneElse
+	msgbox FallarborTown_Text_YouWill
+	giveitem ITEM_MYSTERY_GIFT
+	setflag FLAG_EON_QUEST_STARTED
+	msgbox FallarborTown_Text_DeliverToLilycove
+	release
+	end
+
+FallarborTown_Text_IGotLost::
+	.string "Oh man, the boss is not going to be\n"
+	.string "happy about this...\p"
+	.string "Huh? What's wrong?\p"
+	.string "Uh...I was sort of delivering a package\n"
+	.string "when I...got attacked by a wild POKèMON.\p"
+	.string "......\p"
+	.string "OK fine, I got lost. Do you know how\n"
+	.string "how much of a pain it is to get from\l"
+	.string "SLATEPORT to LILYCOVE?\p"
+	.string "It's not fun! You need to ward past the\n"
+	.string "fields just to get halfway there, not\l"
+	.string "to mention the water in the way you\l"
+	.string "need to SURF over.\p"
+	.string "I don't even have SURF! And ARCEUS\n"
+	.string "knows the boss won't supply us with it.\p"
+	.string "...Whew...OK, I'm good.\p"
+	.string "You look like you know your way around\n"
+	.string "out here. You mind delivering it for me?$"
+
+FallarborTown_Text_YouWill::
+	.string "You will? Oh, thank goodness...\n"
+	.string "It's addressed to some gal in LILYCOVE.$"
+
+FallarborTown_Text_DeliverToLilycove::
+	.string "You're a lifesaver, kid.\n"
+	.string "Thanks a million.$"
+
+FallarborTown_EventScripts_FindSomeoneElse::
+	msgbox FallarborTown_Text_YouWontDoIt
+	release
+	end
+
+FallarborTown_Text_YouWontDoIt::
+	.string "You won't help me? Ugh, fine. Fair\n"
+	.string "enough. I'll figure something out.$"
+
+FallarborTown_EventScripts_StartedEonQuest::
+	msgbox FallarborTown_Text_DontForget
+	release
+	end
+
+FallarborTown_Text_DontForget::
+	.string "Don't forget! The package is going\n"
+	.string "to a gal in LILYCOVE.$"
+
+FallarborTown_EventScripts_TicketDelivered::
+	msgbox FallarborTown_Text_YouDeliveredIt
+	release
+	end
+
+FallarborTown_Text_YouDeliveredIt::
+	.string "You delivered it? Nice job, kid.\p"
+	.string "A ticket? Listen kid, what's in those\n"
+	.string "parcels is none of my concern.$"
+
 FallarborTown_EventScript_ExpertMNormal::
 	msgbox FallarborTown_Text_RegionKnownForMeteors, MSGBOX_DEFAULT
 	release

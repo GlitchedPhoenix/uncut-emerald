@@ -12,6 +12,15 @@ Common_Movement_Delay48:
 	delay_16
 	step_end
 
+Common_Movement_Delay96:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
 Common_Movement_FacePlayer:
 	face_player
 	step_end
@@ -97,4 +106,16 @@ Common_Movement_WalkUp:
 Common_Movement_WalkUp2::
 	walk_up
 	walk_up
+	step_end
+
+Common_Movement_WalkDown:
+	walk_down
+	step_end
+
+Common_Movement_WalkDownAndDelay:
+	walk_down
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end

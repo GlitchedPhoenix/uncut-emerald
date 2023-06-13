@@ -1,0 +1,35 @@
+- Pretty much everything else supposed to carry over does, including...
+* Party mons
+* Box mons
+* Money
+* Play time
+* Bag items
+* PC items
+* Pokedex progress
+* Options
+
+- Erased stuff includes
+* Daycare mons
+* Coins * Want to keep
+* Gabby and Ty
+* Registered Item
+* Dewford Trend
+* Mail
+* Apprentice things
+* Mystery Gift
+* Trend
+* Berry Trees
+* Secret bases
+* Hall of Fame
+* Repel steps
+* Trainer stars
+* Trainer rematches
+* Decorations * Want to keep
+* Link battle records
+
+Some other stuff to maybe check
+* Secret wallpaper
+* Flags/Vars (seems to be fine) * Probably needs an entire run worth of testing.
+* Game Stats (research everything this means)
+* Contest shit (winners, museum portraits) * Don't have means to check yet
+* Match call numbers

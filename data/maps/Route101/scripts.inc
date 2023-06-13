@@ -221,15 +221,27 @@ Route101_EventScript_RouteSign::
 Route101_EventScript_BirchsBag::
 	lock
 	faceplayer
+	msgbox Route101_Text_EndlessBag
+	goto Starter_EventScript_Page1
+
+Route101_Text_EndlessBag::
+	.string "You reach your hand into the bag.\n"
+	.string "The inside seems to be impossibly\l"
+	.string "larger than the outside.\p"
+	.string "Your hand grasps a POKé BALL.\n"
+	.string "What does it contain?$"
+
+Route101_EventScript_ContinueBirch::
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH
-	fadescreen FADE_TO_BLACK
+	closemessage
+	setwildbattle SPECIES_ZIGZAGOON, 2
+	special BattleSetup_StartScriptedWildBattle
+	waitstate
 	removeobject LOCALID_ZIGZAGOON
 	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	special ChooseStarter
-	waitstate
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT

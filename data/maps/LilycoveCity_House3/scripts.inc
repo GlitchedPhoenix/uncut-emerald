@@ -10,6 +10,7 @@ LilycoveCity_House3_OnTransition:
 LilycoveCity_House3_EventScript_PokefanF::
 	lock
 	faceplayer
+	goto_if_set FLAG_EON_QUEST_STARTED, LilycoveCity_EventScripts_DeliverTicket
 	msgbox LilycoveCity_House3_Text_LearnFromMasterOfPokeblocks, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LilycoveCity_House3_EventScript_DeclinePokeblockLearn
 	msgbox LilycoveCity_House3_Text_ExplainPokeblocks, MSGBOX_DEFAULT
@@ -18,6 +19,70 @@ LilycoveCity_House3_EventScript_PokefanF::
 	waitmovement 0
 	release
 	end
+
+LilycoveCity_EventScripts_DeliverTicket::
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, LilycoveCity_Event_DeliverMale
+	call_if_eq VAR_RESULT, FEMALE, LilycoveCity_Event_DeliverFemale
+	end
+
+LilycoveCity_Event_DeliverMale::
+	msgbox LilycoveCity_Text_ParcelMale
+	goto LilycoveCity_EventScripts_DeliverTicket2
+	end
+
+LilycoveCity_Event_DeliverFemale::
+	msgbox LilycoveCity_Text_ParcelFemale
+	goto LilycoveCity_EventScripts_DeliverTicket2
+	end
+
+LilycoveCity_EventScripts_DeliverTicket2::
+	removeitem ITEM_MYSTERY_GIFT
+	playfanfare MUS_OBTAIN_ITEM
+	message Text_MysteryGiftGone
+	waitfanfare
+	msgbox LilycoveCity_Text_TwoInHere
+	giveitem ITEM_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	clearflag FLAG_EON_QUEST_STARTED
+	setflag FLAG_EON_TICKET_DELIVERED
+	msgbox LilycoveCity_Text_ThankYou
+	release
+	end
+
+Text_MysteryGiftGone::
+	.string "{PLAYER} handed over the MYSTERY GIFT.$"
+
+LilycoveCity_Text_ParcelMale::
+	.string "Oh? What's that? A package?\n"
+	.string "I did order something. Are you the\l"
+	.string "delivery man?\p"
+	.string "I cannot believe that HPS would go so far\n"
+	.string "as to hire young children to work!\p"
+	.string "Nevertheless, thank you child.$"
+
+LilycoveCity_Text_ParcelFemale::
+	.string "Oh? What's that? A package?\n"
+	.string "I did order something. Are you the\l"
+	.string "delivery woman?\p"
+	.string "I cannot believe that HPS would go so\n"
+	.string "far as to hire child labor!\p"
+	.string "Nevertheless, thank you child.$"
+
+LilycoveCity_Text_TwoInHere::
+	.string "… … … … … … … …\n"
+	.string "… … … … … … … …\p"
+	.string "Oh? These tickets...this can't be right.\n"
+	.string "Did I make the order incorrectly?\p"
+	.string "I'm sorry child, but these aren't what\n"
+	.string "we intended to order. Here you are.$"
+
+LilycoveCity_Text_ThankYou::
+	.string "Thank you for your effort, though. I\n"
+	.string "hope it wasn't too much of a problem\l"
+	.string "to get here.\p"
+	.string "Now then, I need to make sure I get\n"
+	.string "the LEON TICKETS instead.$"
 
 LilycoveCity_House3_EventScript_DeclinePokeblockLearn::
 	msgbox LilycoveCity_House3_Text_OhAreYouSure, MSGBOX_DEFAULT

@@ -1729,3 +1729,43 @@ gTilesetPalettes_UnionRoom::
 	.align 2
 gTilesetTiles_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Sevii::
+	.incbin "data/tilesets/primary/sevii/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/sevii/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Sevii::
+	.incbin "data/tilesets/primary/sevii/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Islands123::
+	.incbin "data/tilesets/secondary/islands_123/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/islands_123/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Islands123::
+	.incbin "data/tilesets/secondary/islands_123/tiles.4bpp.lz"

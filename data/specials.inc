@@ -333,6 +333,7 @@ gSpecials::
 	def_special ShowContestEntryMonPic
 	def_special HideContestEntryMonPic
 	def_special SetEReaderTrainerGfxId
+	def_special BattleSetup_StartScriptedWildBattle
 	def_special BattleSetup_StartLatiBattle
 	def_special SetRoute119Weather
 	def_special SetRoute123Weather

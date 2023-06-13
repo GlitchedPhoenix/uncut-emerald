@@ -18,8 +18,23 @@ NavelRock_Top_EventScript_HideHoOh::
 NavelRock_Top_EventScript_TryShowHoOh::
 	setvar VAR_TEMP_1, 1
 	goto_if_set FLAG_DEFEATED_HO_OH, Common_EventScript_NopReturn
+	call_if_unset FLAG_DEFEATED_ENTEI, NavelRock_CheckEntei
+	call_if_unset FLAG_DEFEATED_RAIKOU, NavelRock_CheckRaikou
+	call_if_unset FLAG_DEFEATED_SUICUNE, NavelRock_CheckSuicune
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_HO_OH
+	return
+
+NavelRock_CheckEntei::
+	goto_if_unset FLAG_CAUGHT_ENTEI, Common_EventScript_NopReturn
+	return
+
+NavelRock_CheckRaikou::
+	goto_if_unset FLAG_CAUGHT_RAIKOU, Common_EventScript_NopReturn
+	return
+
+NavelRock_CheckSuicune::
+	goto_if_unset FLAG_CAUGHT_SUICUNE, Common_EventScript_NopReturn
 	return
 
 NavelRock_Top_OnResume:
@@ -57,7 +72,7 @@ NavelRock_Top_EventScript_HoOh::
 	applymovement LOCALID_HO_OH, NavelRock_Top_Movement_HoOhApproach
 	waitmovement 0
 	special RemoveCameraObject
-	seteventmon SPECIES_HO_OH, 70
+	seteventmon SPECIES_HO_OH, 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

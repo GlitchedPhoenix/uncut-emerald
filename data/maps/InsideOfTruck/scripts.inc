@@ -13,6 +13,18 @@ InsideOfTruck_OnResume:
 	setstepcallback STEP_CB_TRUCK
 	end
 
+Test_GiveItems::
+	lock
+	giveitem ITEM_POKEBLOCK_CASE
+	giveitem ITEM_COIN_CASE
+	setflag FLAG_SYS_POKENAV_GET
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_HAS_MATCH_CALL
+	warp MAP_ROUTE120, 5, 77
+	waitstate
+	end
+
 InsideOfTruck_EventScript_SetIntroFlags::
 	lockall
 	setflag FLAG_HIDE_MAP_NAME_POPUP

@@ -122,6 +122,35 @@
 #define MULTI_SLATEPORT_TENT_RULES         111
 #define MULTI_FALLARBOR_TENT_RULES         112
 #define MULTI_TAG_MATCH_TYPE               113
+#define MULTI_STARTER_PAGE1                114
+#define MULTI_STARTER_PAGE2                115
+#define MULTI_STARTER_PAGE3                116
+#define MULTI_STARTER_PAGE4                117
+#define MULTI_STARTER_NORMAL               118
+#define MULTI_STARTER_FIRE                 119
+#define MULTI_STARTER_WATER                120
+#define MULTI_STARTER_GRASS                121
+#define MULTI_STARTER_ELECTRIC             122
+#define MULTI_STARTER_ICE                  123
+#define MULTI_STARTER_ROCK                 124
+#define MULTI_STARTER_GROUND               125
+#define MULTI_STARTER_POISON               126
+#define MULTI_STARTER_FLYING               127
+#define MULTI_STARTER_BUG                  128
+#define MULTI_STARTER_STEEL                129
+#define MULTI_STARTER_FIGHTING             130
+#define MULTI_STARTER_PSYCHIC              131
+#define MULTI_STARTER_GHOST                132
+#define MULTI_STARTER_DARK                 133
+#define MULTI_STARTER_DRAGON               134
+#define MULTI_STARTER_CLASSIC1             135
+#define MULTI_STARTER_CLASSIC2             136
+#define MULTI_STARTER_PAIN                 137
+#define MULTI_WHATSINSPACE                 138
+#define MULTI_ENTRIES                      139
+#define MULTI_GENTLEMAN_ANSWERS            140
+#define MULTI_DEBUG_MENU                   141
+#define MULTI_DEBUG_WARP                   142
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

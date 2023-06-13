@@ -171,7 +171,21 @@ MtPyre_Summit_EventScript_OldLady::
 
 MtPyre_Summit_EventScript_OldLadyOrbsReturned::
 	msgbox MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs, MSGBOX_DEFAULT
+	multichoicedefault 22, 8, MULTI_YESNO, 0, FALSE
+	switch VAR_RESULT
+	case 1, MtPyre_EventScripts_DeclineLegend
+	case MULTI_B_PRESSED, MtPyre_EventScripts_DeclineLegend
+	msgbox MtPyre_Text_HLLegend
+	giveitem ITEM_MYSTIC_TICKET
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	setflag FLAG_RECEIVED_MYSTIC_TICKET
+	msgbox MtPyre_Text_TicketGet
 	setflag FLAG_RETURNED_RED_OR_BLUE_ORB
+	release
+	end
+
+MtPyre_EventScripts_DeclineLegend::
+	msgbox MtPyre_Text_NoLegend
 	release
 	end
 
@@ -543,7 +557,66 @@ MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs:
 	.string "The two men who took the ORBS came\n"
 	.string "back to return them on their own.\p"
 	.string "Those men…\n"
+	.string "Perhaps they are not so evil after all…\p"
+	.string "They talked about you at length,\n"
+	.string "you know…\p"
+	.string "So you were the one to slap some sense\n"
+	.string "into them? Well done, youngster…\p"
+	.string "Would you like to hear a story, told\n"
+	.string "far away in another land?$"
+
+MtPyre_Summit_Text_ThoseTwoMenReturnedOrbsNoLegend:
+	.string "The two men who took the ORBS came\n"
+	.string "back to return them on their own.\p"
+	.string "Those men…\n"
 	.string "Perhaps they are not so evil after all…$"
+
+MtPyre_Text_HLLegend::
+	.string "Long ago, in a farther land, there\n"
+	.string "existed two great bird POKèMON.\p"
+	.string "One adorned in rainbow feathers that\n"
+	.string "sparkled like gold, the other clad\l"
+	.string "in a shimmering silver pelt.\p"
+	.string "Each POKèMON ruled over a trio of\n"
+	.string "other POKèMON below themselves.\p"
+	.string "The people of ECRUTEAK CITY worshipped\n"
+	.string "them like gods, and built a pair of\l"
+	.string "towers to honor their name.\p"
+	.string "No one quite knows where they came from.\n"
+	.string "However, that has not stopped people\l"
+	.string "from weaving their own tales.\p"
+	.string "One such story involves an islet in\n"
+	.string "the far away SEVII ISLANDS.\p"
+	.string "According to the story, the two\n"
+	.string "birds make their nest there\l"
+	.string "during times of peace.\p"
+	.string "This are is called NAVEL ROCK.\p"
+	.string "One day, a brave explorer found such\n"
+	.string "a place. The deep rumblings off of the\l"
+	.string "cave walls shook this person to their\l"
+	.string "very core, and they hastily departed.\p"
+	.string "The traveler had mapped his route,\n"
+	.string "however, in hopes that one day a\l"
+	.string "braver traveller would uncover the\l"
+	.string "island's secrets in his place.\p"
+	.string "Perhaps you, youngster, will be the\n"
+	.string "one brave enough to navigate it.\l"
+	.string "I'd like you to have this.$"
+
+MtPyre_Text_TicketGet::
+	.string "My advice to you, youngster, is\n"
+	.string "that you should arm yourself\l"
+	.string "with knowledge.\p"
+	.string "An acquaintance of ours is visiting\n"
+	.string "HOENN. She may know something that\l"
+	.string "will guide you on your way.\p"
+	.string "We do not know where she is, but\n"
+	.string "she was always eager to learn more\l"
+	.string "about our seafaring...\p"
+	.string "May fortune find you, child.$"
+
+MtPyre_Text_NoLegend::
+	.string "I see…$"
 
 MtPyre_Summit_Text_SuperAncientPokemonTaughtUs:
 	.string "The embodiments of the land, sea,\n"

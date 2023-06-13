@@ -17,6 +17,15 @@ MossdeepCity_SpaceCenter_2F_MapScripts::
 MossdeepCity_SpaceCenter_2F_OnTransition:
 	call_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_MoveCivilians
 	call_if_eq VAR_MOSSDEEP_SPACE_CENTER_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
+	call_if_unset FLAG_MOSS_ANABEL_TRIGGERED, MossdeepCity_CheckGameBeat
+	end
+
+MossdeepCity_CheckGameBeat::
+	goto_if_set FLAG_ACTIVATE_ORDER_66, MossdeepCity_SpawnAnabel
+	end
+
+MossdeepCity_SpawnAnabel::
+	clearflag FLAG_MOSS_ANABEL_HIDE
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_MoveCivilians::
@@ -28,6 +37,183 @@ MossdeepCity_SpaceCenter_2F_EventScript_MoveCivilians::
 	setobjectxyperm LOCALID_GENTLEMAN, 1, 3
 	setobjectmovementtype LOCALID_GENTLEMAN, MOVEMENT_TYPE_FACE_RIGHT
 	return
+
+MossdeepCity_EventScripts_Anabel::
+	lock
+	msgbox Anabel_Text_Fascinating
+	faceplayer
+	msgbox Anabel_Text_WhatDoYouThink
+	multichoicedefault 22,8,MULTI_YESNO, 0, FALSE
+	closemessage
+	switch VAR_RESULT
+	case 1, MossdeepCity_Anabel_Disappointed
+	case MULTI_B_PRESSED, MossdeepCity_Anabel_Disappointed
+	applymovement 10, Common_Movement_FaceUp
+	waitmovement 0
+	switch VAR_FACING
+	case DIR_WEST, MossdeepCity_MovePlayerWest
+	case DIR_NORTH, MossdeepCity_MovePlayerNorth
+	goto MossdeepCity_EventScripts_Anabel2
+	end
+
+MossdeepCity_EventScripts_Anabel2::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox Anabel_Text_WhatIsOutThere
+	multichoicedefault 20, 6, MULTI_WHATSINSPACE, 0, TRUE
+	switch VAR_RESULT
+	case 0, MossdeepCity_Anabel_OtherCreatures
+	case 1, MossdeepCity_Anabel_AltUniverses
+	case 2, MossdeepCity_Anabel_Nothing
+	case MULTI_B_PRESSED, MossdeepCity_Anabel_Nothing
+	end
+
+MossdeepCity_MovePlayerWest::
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_MovePlayerWest
+	waitmovement 0
+	goto MossdeepCity_EventScripts_Anabel2
+
+MossdeepCity_Movement_MovePlayerWest::
+	walk_down
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+MossdeepCity_MovePlayerNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_MovePlayerNorth
+	waitmovement 0
+	goto MossdeepCity_EventScripts_Anabel2
+
+MossdeepCity_Movement_MovePlayerNorth::
+	walk_left
+	walk_up
+	step_end
+
+Anabel_Text_Fascinating::
+	.string "A vessel capable of letting us peer\n"
+	.string "into the great beyond...\p"
+	.string "Endless possibilities...\n"
+	.string "A vast space between them...$"
+
+Anabel_Text_WhatDoYouThink::
+	.string "Does anything about this interest\n"
+	.string "you?$"
+
+Anabel_Text_WhatIsOutThere::
+	.string "I see. It is very interesting,\n"
+	.string "isn't it?\p"
+	.string "There could be anything out there...\n"
+	.string "Waiting for us to discover it...\p"
+	.string "Tell me. What do you think is\n"
+	.string "out there?$"
+
+MossdeepCity_Anabel_Disappointed::
+	applymovement 10, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox Anabel_Text_Disappointing
+	release
+	end
+
+MossdeepCity_Anabel_Nothing::
+	applymovement 10, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Anabel_Text_Nothing
+	release
+	end
+
+Anabel_Text_Disappointing::
+	.string "I see. That's unfortunately\n"
+	.string "disappointing.$"
+
+Anabel_Text_Nothing::
+	.string "Ah.\p"
+	.string "I see...$"
+
+MossdeepCity_Anabel_OtherCreatures::
+	msgbox Anabel_Text_OtherCreatures
+	multichoicedefault 22, 8, MULTI_YESNO, 0, FALSE
+	goto MossdeepCity_Anabel_GiveTicket
+	end
+
+MossdeepCity_Anabel_AltUniverses::
+	msgbox Anabel_Text_AltUniverses
+	multichoicedefault 22, 8, MULTI_YESNO, 0, FALSE
+	goto MossdeepCity_Anabel_GiveTicket
+	end
+
+Anabel_Text_OtherCreatures::
+	.string "Strange creatures? What an\n"
+	.string "interesting concept...\p"
+	.string "What form would they take? Could\n"
+	.string "we humans even comprehend such a\l"
+	.string "thing like that...?\p"
+	.string "What if they're even similar\n"
+	.string "to our POKèMON?\p"
+	.string "......\p"
+	.string "Do you think we'll ever get the\n"
+	.string "chance to see something like that?$"
+
+Anabel_Text_AltUniverses::
+	.string "I see... Alternate universes\n"
+	.string "to our own is certainly possible,\l"
+	.string "if space is truly endless...\p"
+	.string "There could be another pair of\n"
+	.string "people exactly like us out there,\l"
+	.string "talking just like this...\p"
+	.string "Do you think we'll ever meet them...?$"
+
+MossdeepCity_Anabel_GiveTicket::
+	msgbox Anabel_Text_Interesting
+	applymovement 10, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox Anabel_Text_Sorry
+	giveitem ITEM_AURORA_TICKET
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	setflag FLAG_RECEIVED_AURORA_TICKET
+	msgbox Anabel_Text_MakeUseOfIt
+	closemessage
+	applymovement 10, Anabel_Movement_Leave
+	waitmovement 0
+	removeobject 10
+	setflag FLAG_MOSS_ANABEL_TRIGGERED
+	setflag FLAG_MOSS_ANABEL_HIDE
+	release
+	end
+
+Anabel_Text_Interesting::
+	.string "Interesting...$"
+	
+Anabel_Text_Sorry::
+	.string "I must apologize...\p"
+	.string "I have a tendency to ramble about\n"
+	.string "about these kinds of things...\p"
+	.string "Thank you for indulging my cuiosity.\n"
+	.string "I would like you to have this...$"
+
+Anabel_Text_MakeUseOfIt::
+	.string "It's something I recieved from\n"
+	.string "an acquiantance at DEVON. He said it\l"
+	.string "allows the bearer to find a strange\l"
+	.string "island in the SEVII ISLANDS where a\l"
+	.string "otherworldly POKèMON sleeps...\p"
+	.string "You'll make better use of it...\n"
+	.string "Goodbye for now...$"
+
+MossdeepCity_Text_ReceivedATicket::
+	.string "{PLAYER} recieved the AURORA TICKET!$"
+
+Anabel_Movement_Leave::
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
 MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts::
 	setobjectxyperm LOCALID_GRUNT_6, 11, 2

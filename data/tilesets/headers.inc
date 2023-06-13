@@ -830,3 +830,25 @@ gTileset_UnionRoom::
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_Sevii::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0 @ padding
+	.4byte gTilesetTiles_Sevii
+	.4byte gTilesetPalettes_Sevii
+	.4byte gMetatiles_Sevii
+	.4byte gMetatileAttributes_Sevii
+	.4byte InitTilesetAnim_Sevii
+
+	.align 2
+gTileset_Islands123::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0 @ padding
+	.4byte gTilesetTiles_Islands123
+	.4byte gTilesetPalettes_Islands123
+	.4byte gMetatiles_Islands123
+	.4byte gMetatileAttributes_Islands123
+	.4byte NULL @ animation callback
